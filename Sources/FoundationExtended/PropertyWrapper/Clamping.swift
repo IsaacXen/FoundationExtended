@@ -2,7 +2,7 @@ import Foundation
 
 /// Clamping a `Comparable` value from a lower bound up to, and including, an upper bound.
 @propertyWrapper
-struct Clamping<Value: Comparable> {
+public struct Clamping<Value: Comparable> {
     
     var value: Value
     let range: ClosedRange<Value>
