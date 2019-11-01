@@ -4,16 +4,16 @@ import Foundation
 @propertyWrapper
 public struct Clamping<Value: Comparable> {
     
-    var value: Value
-    let range: ClosedRange<Value>
+    private(set) var value: Value
+    public let range: ClosedRange<Value>
     
-    var wrappedValue: Value {
-        get { value }
-        set { value = max(range.lowerBound, min(newValue, range.upperBound)) }
+    public var wrappedValue: Value {
+        get { max(range.lowerBound, min(value, range.upperBound)) }
+        set { value = newValue }
     }
     
-    init(wrappedValue: Value, _ range: ClosedRange<Value>) {
-        self.value = max(range.lowerBound, min(wrappedValue, range.upperBound))
+    public init(wrappedValue: Value, _ range: ClosedRange<Value>) {
+        self.value = wrappedValue
         self.range = range
     }
     
