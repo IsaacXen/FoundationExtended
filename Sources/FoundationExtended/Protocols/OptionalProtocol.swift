@@ -12,11 +12,11 @@ import Foundation
 /// b is OptionalProtocol // false
 /// ```
 ///
-protocol OptionalProtocol {
+public protocol OptionalProtocol {
   // the metatype value for the wrapped type.
   static var wrappedType: Any.Type { get }
 }
 
 extension Optional: OptionalProtocol {
-  static var wrappedType: Any.Type { return Wrapped.self }
+  public static var wrappedType: Any.Type { return Wrapped.self }
 }
